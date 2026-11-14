@@ -17,9 +17,14 @@ const firebaseConfig = {
   projectId: "studysphere-46c62",
   storageBucket: "studysphere-46c62.firebasestorage.app",
   messagingSenderId: "794633858734",
-  appId: "1:794633858734:web:39b1e94a1a9b502254873f",
-  measurementId: "G-PYZBMQRW5F"
+  appId: "1:794633858734:web:e303482cd6783e3c54873f",
+  measurementId: "G-HLEB3PK88J"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
