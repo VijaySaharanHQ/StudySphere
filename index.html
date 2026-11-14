@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="StudySphere — a shared Class 12 PCM study space for Vijay, Shambhavi and Palak.">
+  <title>StudySphere | Shared Study Space</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main id="authScreen" class="auth-wrap">
+    <section class="auth-card">
+      <div class="brand-mark">S</div>
+      <p class="eyebrow">YOUR SHARED STUDY SPACE</p>
+      <h1>Study<span>Sphere</span></h1>
+      <p class="muted auth-copy">One place for three students, shared goals and a stronger study routine.</p>
+      <form id="loginForm" class="stack">
+        <label>Email address<input id="email" type="email" autocomplete="username" placeholder="Enter your invited email" required></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" placeholder="Your password" required></label>
+        <button class="btn primary full" type="submit">Sign in <span>→</span></button>
+      </form>
+      <p id="authMessage" class="form-message" aria-live="polite">Accounts are created by the StudySphere administrator.</p>
+      <div class="auth-foot"><span class="live-dot"></span> Private group · Vijay · Shambhavi · Palak</div>
+    </section>
+  </main>
+
+  <div id="appShell" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand"><div class="brand-mark small">S</div><div><strong>StudySphere</strong><small>STUDY TOGETHER</small></div></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-view="dashboard"><span>◫</span> Overview</button>
+        <button class="nav-item" data-view="syllabus"><span>▤</span> Syllabus tracker</button>
+        <button class="nav-item" data-view="timetable"><span>◷</span> Timetable</button>
+        <button class="nav-item" data-view="tasks"><span>☑</span> Tasks & homework</button>
+        <button class="nav-item" data-view="practicals"><span>⚗</span> Practicals</button>
+        <button class="nav-item" data-view="exam"><span>✦</span> JEE & pre-boards</button>
+        <button class="nav-item" data-view="goals"><span>◎</span> Shared goals</button>
+        <button class="nav-item" data-view="notes"><span>▧</span> Study notes</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="group-mini"><div class="avatar-stack"><i>V</i><i>S</i><i>P</i></div><div><b>PCM Study Group</b><small>3 student profiles</small></div></div>
+        <button id="signOutBtn" class="signout">↪ Sign out</button>
+      </div>
+    </aside>
+
+    <section class="main-area">
+      <header class="topbar">
+        <button id="menuBtn" class="icon-btn mobile-only" aria-label="Open menu">☰</button>
+        <div><p class="eyebrow" id="dateLabel">YOUR STUDY WORKSPACE</p><h2 id="viewTitle">Overview</h2></div>
+        <div class="top-actions"><span class="sync-pill"><i class="live-dot"></i> Cloud synced</span><div class="user-chip"><div class="avatar" id="userAvatar">V</div><div><b id="userName">Student</b><small>Class 12 · PCM</small></div></div></div>
+      </header>
+
+      <div id="content" class="content-area">
+        <section class="welcome-row">
+          <div><p class="eyebrow">MONDAY MINDSET, EVERY DAY</p><h1>Let's make today <em>count.</em></h1><p class="muted">Small, consistent study sessions build strong results.</p></div>
+          <div class="today-card"><span class="today-icon">✧</span><div><small>YOUR DAILY REMINDER</small><b>Progress over perfection.</b></div></div>
+        </section>
+        <section class="stats-grid" id="statsGrid"></section>
+        <section class="dashboard-grid">
+          <article class="panel focus-panel"><div class="panel-head"><div><p class="eyebrow">FOCUS SESSION</p><h3>Stay in the zone</h3></div><span class="soft-tag">Pomodoro</span></div>
+            <div class="timer-ring"><div><strong id="timerDisplay">25:00</strong><small id="timerMode">FOCUS TIME</small></div></div>
+            <div class="timer-controls"><button class="btn primary" id="timerStart">Start focus</button><button class="btn ghost" id="timerReset">Reset</button></div>
+            <p class="tiny muted">A focus timer runs in this browser; it is not stored in the shared cloud.</p>
+          </article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">YOUR CIRCLE</p><h3>Study partners</h3></div><span class="soft-tag">Class 12 PCM</span></div><div id="memberCards" class="member-list"></div></article>
+          <article class="panel wide"><div class="panel-head"><div><p class="eyebrow">UP NEXT</p><h3>Upcoming tasks</h3></div><button class="text-btn" data-go="tasks">View all →</button></div><div id="upcomingTasks" class="simple-list"></div></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">GROUP MOMENTUM</p><h3>Chapter completion</h3></div><span class="soft-tag">All profiles</span></div><div id="groupProgress"></div></article>
+        </section>
+      </div>
+      <footer class="app-footer"><span>StudySphere · Built for focused learning</span><span>Shared privately with your study group</span></footer>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

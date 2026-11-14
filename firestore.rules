@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isGroupMember() {
+      return signedIn() &&
+        exists(/databases/$(database)/documents/groups/studysphere/members/$(request.auth.uid));
+    }
+
+    match /groups/studysphere/members/{userId} {
+      // Each student can read only their own membership profile.
+      allow read: if signedIn() && request.auth.uid == userId;
+      // Create membership documents manually in Firebase Console.
+      allow write: if false;
+    }
+
+    match /groups/studysphere/{collectionName}/{documentId} {
+      // Shared group data is available only to the three manually enrolled members.
+      allow read: if isGroupMember() &&
+        collectionName in ['tasks', 'syllabus', 'timetable', 'practicals', 'goals', 'notes', 'exams'];
+      allow create, update, delete: if isGroupMember() &&
+        collectionName in ['tasks', 'syllabus', 'timetable', 'practicals', 'goals', 'notes', 'exams'];
+    }
+
+    // Deny everything else by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
