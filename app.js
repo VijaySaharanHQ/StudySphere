@@ -3,14 +3,27 @@ import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from
 import { getFirestore, collection, doc, getDoc, addDoc, updateDoc, deleteDoc, onSnapshot, query, orderBy, serverTimestamp, writeBatch, getDocs } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 /* 1) Paste the Firebase web-app configuration from Firebase Console here. */
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "PASTE_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "PASTE_MESSAGING_SENDER_ID",
-  appId: "PASTE_APP_ID"
+  apiKey: "AIzaSyBvQIKvNd6pqyHSag4q5JICpVguSvNB1LQ",
+  authDomain: "studysphere-46c62.firebaseapp.com",
+  projectId: "studysphere-46c62",
+  storageBucket: "studysphere-46c62.firebasestorage.app",
+  messagingSenderId: "794633858734",
+  appId: "1:794633858734:web:39b1e94a1a9b502254873f",
+  measurementId: "G-PYZBMQRW5F"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 /* Keep this group ID identical to the Firestore rules and setup guide. */
 const GROUP_ID = "studysphere";
